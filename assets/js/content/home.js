@@ -4,15 +4,15 @@ window.GTL_CONTENT.home = {
   meta: {
     zh: {
       title: "高桌文法研究中心 — 语言、心灵与人间",
-      description: "高桌文法研究中心是一间没有围墙的小型文学院，以中英法三语讨论文法、情绪、社交、爱恋与创作。"
+      description: "高桌文法研究中心是一间没有围墙的小型文学院，以中英法三语讨论文法、情绪、社交、爱恋与创作，并设有可检索的语言文字资料库。"
     },
     en: {
       title: "High Table Grammatical Research Center — the language of life",
-      description: "A small college without walls: grammar, emotion, social life, love and creation, in Chinese, English and French."
+      description: "A small college without walls with five studies and a searchable language and text library, in Chinese, English and French."
     },
     fr: {
       title: "Centre de recherche grammaticale de la Haute Table — la langue de la vie",
-      description: "Un petit collège sans murs : grammaire, émotion, sociabilité, amour et création, en chinois, anglais et français."
+      description: "Un petit collège sans murs : cinq études et une bibliothèque consultable des langues et des textes, en chinois, anglais et français."
     }
   },
 
@@ -158,6 +158,30 @@ window.GTL_CONTENT.home = {
             desc: "De l'attention à la révision, donner forme à une œuvre que l'on peut tenir dans la main."
           }
         ]
+      }
+    },
+
+    library: {
+      zh: {
+        eyebrow: "研究资料库",
+        title: "从一张书桌，进入更多文本",
+        text: "五十一种经过分类的中外文献，覆盖文学、文字研究、语言学、社会学、心理学与经济学。可以按类别、地区与关键词检索，每条都附有三语摘要、阅读视角和来源。",
+        cta: "打开语言文字资料库",
+        items: ["文学 · 11", "文字研究 · 8", "语言学 · 8", "社会学 · 8", "心理学 · 8", "经济学 · 8"]
+      },
+      en: {
+        eyebrow: "Research library",
+        title: "From one desk, into many more texts",
+        text: "Fifty-one classified works from across the world, spanning literature, writing and textual research, linguistics, sociology, psychology and economics. Filter by category, region or keyword; every entry includes a trilingual summary, a reading lens and a source.",
+        cta: "Open the Language & Text Library",
+        items: ["Literature · 11", "Writing & text · 8", "Linguistics · 8", "Social thought · 8", "Psychology · 8", "Economics · 8"]
+      },
+      fr: {
+        eyebrow: "Bibliothèque de recherche",
+        title: "D'un bureau, vers beaucoup d'autres textes",
+        text: "Cinquante et un ouvrages classés, venus de plusieurs aires culturelles : littérature, écritures et critique textuelle, linguistique, sociologie, psychologie et économie. Filtrez par catégorie, région ou mot-clé ; chaque notice propose un résumé trilingue, un angle de lecture et une source.",
+        cta: "Ouvrir la bibliothèque",
+        items: ["Littérature · 11", "Écritures · 8", "Linguistique · 8", "Pensée sociale · 8", "Psychologie · 8", "Économie · 8"]
       }
     },
 

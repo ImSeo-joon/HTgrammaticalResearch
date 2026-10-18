@@ -1,8 +1,8 @@
 # 高桌文法研究中心
 
-一所没有围墙的小型文学院。静态站点，中 / EN / FR 三语可切换，默认英文，共五个模块：
+一所没有围墙的小型文学院。静态站点，中 / EN / FR 三语可切换，默认英文。五个正文模块之外，另设可检索的**语言文字资料库**：
 
-**文法 · 情绪 · 社交 · 爱恋 · 创作**
+**文法 · 情绪 · 社交 · 爱恋 · 创作 · 语言文字资料库**
 
 每一页末尾固定声明：
 
@@ -41,6 +41,7 @@ HighTableGrammaticalResearch/
 ├─ social.html             社交
 ├─ love.html               爱恋
 ├─ creation.html           创作
+├─ library.html            语言文字资料库
 ├─ 404.html                自定义 404
 ├─ manifest.webmanifest    PWA 清单
 ├─ sw.js                   Service Worker 与离线缓存
@@ -50,13 +51,14 @@ HighTableGrammaticalResearch/
 │  ├─ img/brand/           背景、透明圆角 logo 与 PWA 图标
 │  └─ js/
 │     ├─ site.js           三语切换、渲染、目录、菜单
-│     └─ content/          五个模块的三语文稿
+│     └─ content/          五个内容模块与资料库的三语文稿
 │        ├─ home.js
 │        ├─ grammar.js
 │        ├─ mind.js
 │        ├─ social.js
 │        ├─ love.js
-│        └─ creation.js
+│        ├─ creation.js
+│        └─ library.js
 ├─ tools/                  品牌图标与背景衍生资源生成脚本
 ├─ preview/                本地视觉检查截图
 ├─ robots.txt
@@ -94,6 +96,8 @@ window.GTL_CONTENT.grammar = {
 - `table`：表格，`caption`、`head`、`rows`
 
 修改时请同步更新三种语言，避免切换后出现空缺。界面文案（导航、页脚、声明等）在 `assets/js/site.js` 顶部的 `CHROME` 对象中。
+
+资料库使用单独的数据结构：`categories` 定义六个子模块，`regions` 定义地区，`resources` 保存文献条目。当前收录 51 条文学、文字研究、语言学、社会学、心理学与经济学文献。每条文献包含分类、地区、年份、三语题名/摘要/阅读视角，以及书目来源；页面支持分类、地区和关键词组合筛选。
 
 ## 语言切换
 

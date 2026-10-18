@@ -21,7 +21,8 @@
         mind: "情绪",
         social: "社交",
         love: "爱恋",
-        creation: "创作"
+        creation: "创作",
+        library: "资料库"
       },
       menu: "菜单",
       close: "关闭",
@@ -33,7 +34,7 @@
       epilogueLabel: "阅读之后",
       stamp: "高桌",
       nextLabel: "下一个模块",
-      footerExplore: "五门功课",
+      footerExplore: "五门功课与资料库",
       footerStatement: "本站声明",
       disclaimer: "仅作建议，不得当作依赖。",
       disclaimerNote: "本站内容为一般性人文讨论，不构成医疗、心理、法律或财务建议。",
@@ -61,7 +62,8 @@
         mind: "Emotion",
         social: "Social",
         love: "Love",
-        creation: "Creation"
+        creation: "Creation",
+        library: "Library"
       },
       menu: "Menu",
       close: "Close",
@@ -73,7 +75,7 @@
       epilogueLabel: "After reading",
       stamp: "高桌",
       nextLabel: "Next module",
-      footerExplore: "Five studies",
+      footerExplore: "Five studies & library",
       footerStatement: "Site statement",
       disclaimer: "Suggestions only — not to be depended upon.",
       disclaimerNote: "This site offers general humanistic reflection, not medical, psychological, legal or financial advice.",
@@ -101,7 +103,8 @@
         mind: "Émotion",
         social: "Sociabilité",
         love: "Amour",
-        creation: "Création"
+        creation: "Création",
+        library: "Bibliothèque"
       },
       menu: "Menu",
       close: "Fermer",
@@ -113,7 +116,7 @@
       epilogueLabel: "Après la lecture",
       stamp: "高桌",
       nextLabel: "Module suivant",
-      footerExplore: "Cinq études",
+      footerExplore: "Cinq études et bibliothèque",
       footerStatement: "Déclaration du site",
       disclaimer: "Simple suggestion — à ne pas prendre pour une dépendance.",
       disclaimerNote: "Ce site propose une réflexion humaniste générale ; il ne constitue pas un avis médical, psychologique, juridique ou financier.",
@@ -138,7 +141,8 @@
     { key: "mind", href: "mind.html" },
     { key: "social", href: "social.html" },
     { key: "love", href: "love.html" },
-    { key: "creation", href: "creation.html" }
+    { key: "creation", href: "creation.html" },
+    { key: "library", href: "library.html" }
   ];
 
   const MODULES = [
@@ -146,12 +150,15 @@
     { key: "mind", href: "mind.html", num: "02", accent: "#a1543e" },
     { key: "social", href: "social.html", num: "03", accent: "#3d5b6b" },
     { key: "love", href: "love.html", num: "04", accent: "#7c3448" },
-    { key: "creation", href: "creation.html", num: "05", accent: "#7b5b2d" }
+    { key: "creation", href: "creation.html", num: "05", accent: "#7b5b2d" },
+    { key: "library", href: "library.html", num: "06", accent: "#615c78" }
   ];
 
   const main = document.getElementById("main");
   const page = document.body.getAttribute("data-page") || "home";
-  const content = window.GTL_CONTENT && window.GTL_CONTENT[page];
+  const content = page === "library"
+    ? window.GTL_LIBRARY
+    : window.GTL_CONTENT && window.GTL_CONTENT[page];
 
   let lang = resolveInitialLang();
   let scrollTicking = false;
@@ -257,7 +264,10 @@
     setText("[data-pwa-close]", c.installClose);
 
     const pwaButton = document.querySelector(".pwa-install");
-    if (pwaButton) pwaButton.setAttribute("aria-label", c.install);
+    if (pwaButton) {
+      pwaButton.setAttribute("aria-label", c.install);
+      pwaButton.setAttribute("title", c.install);
+    }
 
     const nav = document.querySelector(".nav");
     if (nav) {
@@ -321,6 +331,7 @@
     const hero = pick(cHome.hero, "zh");
     const manifesto = pick(cHome.manifesto, "zh");
     const modules = pick(cHome.modules, "zh");
+    const library = pick(cHome.library, "zh");
     const practices = pick(cHome.practices, "zh");
     const closing = pick(cHome.closing, "zh");
     const ch = chrome();
@@ -399,6 +410,24 @@
       }).join("") +
       "</div></div></section>";
 
+    const libraryHtml = library
+      ? '<section class="library-teaser">' +
+        '<div class="wrap library-teaser__inner">' +
+        '<div class="library-teaser__copy reveal">' +
+        '<p class="eyebrow">' + escapeHtml(library.eyebrow) + "</p>" +
+        "<h2>" + escapeHtml(library.title) + "</h2>" +
+        "<p>" + escapeHtml(library.text) + "</p>" +
+        '<a class="button" href="library.html">' + escapeHtml(library.cta) +
+        ' <span class="arrow" aria-hidden="true">→</span></a></div>' +
+        '<div class="library-teaser__index reveal">' +
+        library.items.map(function (item, index) {
+          return '<a href="library.html"><span class="library-teaser__num">' +
+            String(index + 1).padStart(2, "0") + "</span><span>" +
+            escapeHtml(item) + "</span><span aria-hidden=\"true\">↗</span></a>";
+        }).join("") +
+        "</div></div></section>"
+      : "";
+
     const closingHtml =
       '<section class="home-closing wrap" id="begin">' +
       '<div class="reveal"><p class="eyebrow">' + escapeHtml(closing.eyebrow) + "</p>" +
@@ -411,7 +440,7 @@
       "</div>" +
       "</section>";
 
-    main.innerHTML = heroHtml + manifestoHtml + modulesHtml + practicesHtml +
+    main.innerHTML = heroHtml + manifestoHtml + modulesHtml + libraryHtml + practicesHtml +
       closingHtml + '<div class="wrap page-epilogue">' + renderEpilogue() + "</div>";
   }
 
@@ -533,6 +562,209 @@
       '<div class="module-layout">' + tocHtml + articleHtml + "</div>";
   }
 
+  function renderLibrary() {
+    const lib = content;
+    const pageData = pick(lib.page, "en");
+    const ui = pick(lib.ui, "en");
+    const hero = pageData;
+    const categories = lib.categories.map(function (category) {
+      return {
+        key: category.key,
+        label: pick(category.label, "en"),
+        intro: pick(category.intro, "en"),
+        count: lib.resources.filter(function (resource) {
+          return resource.category === category.key;
+        }).length
+      };
+    });
+    const regions = lib.regions.map(function (region) {
+      return { key: region.key, label: pick(region.label, "en") };
+    });
+
+    const works = lib.resources.map(function (resource) {
+      const category = categories.filter(function (item) {
+        return item.key === resource.category;
+      })[0] || categories[0];
+      const region = regions.filter(function (item) {
+        return item.key === resource.region;
+      })[0] || regions[0];
+      const title = pick(resource.title, "en");
+      const summary = pick(resource.summary, "en");
+      const lens = pick(resource.lens, "en");
+      const search = [
+        title,
+        resource.author,
+        resource.year,
+        category.label,
+        region.label,
+        summary,
+        lens
+      ].join(" ").toLocaleLowerCase();
+      const source = resource.source.url
+        ? '<a href="' + escapeHtml(resource.source.url) + '" target="_blank" rel="noopener noreferrer">' +
+          escapeHtml(resource.source.label) + ' <span aria-hidden="true">↗</span></a>'
+        : "<span>" + escapeHtml(resource.source.label) + "</span>";
+
+      return {
+        category: resource.category,
+        region: resource.region,
+        search: search,
+        html:
+          '<article class="library-work reveal" data-library-work data-category="' +
+          escapeHtml(resource.category) + '" data-region="' + escapeHtml(resource.region) +
+          '" data-search="' + escapeHtml(search) + '">' +
+          '<div class="library-work__meta"><span>' + escapeHtml(category.label) + "</span><span>" +
+          escapeHtml(region.label) + " · " + escapeHtml(resource.year) + "</span></div>" +
+          "<h2>" + escapeHtml(title) + "</h2>" +
+          '<p class="library-work__creator">' + escapeHtml(resource.author) + "</p>" +
+          '<p class="library-work__summary">' + escapeHtml(summary) + "</p>" +
+          '<div class="library-work__lens"><span>' + escapeHtml(ui.readingLens) + "</span><p>" +
+          escapeHtml(lens) + "</p></div>" +
+          '<div class="library-work__source"><span>' + escapeHtml(ui.source) + "</span>" +
+          source + "</div></article>"
+      };
+    });
+
+    const categoryCards = categories.map(function (category, index) {
+      return (
+        '<button class="library-category reveal" type="button" data-library-filter="' +
+        escapeHtml(category.key) + '" aria-pressed="false" aria-controls="library-grid">' +
+        '<span class="library-category__top"><span>' + String(index + 1).padStart(2, "0") +
+        '</span><span>' + category.count + "</span></span>" +
+        '<span class="library-category__title">' + escapeHtml(category.label) + "</span>" +
+        "<span class=\"library-category__intro\">" + escapeHtml(category.intro) + "</span>" +
+        "</button>"
+      );
+    }).join("");
+
+    const regionOptions = regions.map(function (region) {
+      return '<option value="' + escapeHtml(region.key) + '">' + escapeHtml(region.label) + "</option>";
+    }).join("");
+
+    const heroHtml =
+      '<section class="module-hero library-hero" data-ghost="06">' +
+      '<p class="eyebrow">' + escapeHtml(hero.eyebrow) + "</p>" +
+      "<h1>" + escapeHtml(hero.title) + "</h1>" +
+      '<p class="module-hero__latin">' + escapeHtml(hero.latin) + "</p>" +
+      '<p class="module-hero__lede">' + escapeHtml(hero.lede) + "</p>" +
+      '<ul class="tag-list">' + hero.tags.map(function (tag) {
+        return "<li>" + escapeHtml(tag) + "</li>";
+      }).join("") + "</ul></section>";
+
+    const libraryHtml =
+      '<div class="library-page wrap">' +
+      '<div class="library-categories" role="group" aria-label="' + escapeHtml(ui.filterLabel) + '">' +
+      categoryCards + "</div>" +
+      '<section class="library-catalogue" aria-label="' + escapeHtml(ui.catalogueLabel) + '">' +
+      '<div class="library-toolbar">' +
+      '<label class="library-search"><span>' + escapeHtml(ui.searchLabel) + "</span>" +
+      '<input type="search" data-library-search placeholder="' + escapeHtml(ui.searchPlaceholder) +
+      '" autocomplete="off"></label>' +
+      '<label class="library-region"><span>' + escapeHtml(ui.regionLabel) + "</span>" +
+      '<select data-library-region><option value="all">' + escapeHtml(ui.allRegions) +
+      "</option>" + regionOptions + "</select></label>" +
+      '<button class="library-filter" type="button" data-library-filter="all" aria-pressed="true" ' +
+      'aria-controls="library-grid">' + escapeHtml(ui.all) + " · " + works.length + "</button>" +
+      "</div>" +
+      '<div class="library-status-row"><p class="library-status" data-library-status aria-live="polite"></p>' +
+      '<button class="library-reset" type="button" data-library-reset>' + escapeHtml(ui.reset) + "</button></div>" +
+      '<div class="library-grid" id="library-grid">' +
+      works.map(function (work) { return work.html; }).join("") +
+      "</div>" +
+      '<p class="library-empty" data-library-empty hidden>' + escapeHtml(ui.noResults) + "</p>" +
+      "</section>" +
+      '<aside class="library-method reveal"><p class="eyebrow">' + escapeHtml(ui.methodTitle) + "</p>" +
+      "<p>" + escapeHtml(ui.methodText) + "</p>" +
+      '<p class="library-method__note">' + escapeHtml(ui.sourceNote) + "</p></aside>" +
+      '<div class="page-epilogue">' + renderEpilogue() + "</div></div>";
+
+    main.innerHTML = heroHtml + libraryHtml;
+    setupLibrary();
+  }
+
+  function normalizeSearchText(value) {
+    return String(value || "")
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLocaleLowerCase();
+  }
+
+  function setupLibrary() {
+    const cards = Array.prototype.slice.call(document.querySelectorAll("[data-library-work]"));
+    const filterButtons = Array.prototype.slice.call(document.querySelectorAll("[data-library-filter]"));
+    const searchInput = document.querySelector("[data-library-search]");
+    const regionSelect = document.querySelector("[data-library-region]");
+    const status = document.querySelector("[data-library-status]");
+    const empty = document.querySelector("[data-library-empty]");
+    const reset = document.querySelector("[data-library-reset]");
+    const ui = pick(content.ui, "en");
+    let activeCategory = "all";
+
+    function applyFilters() {
+      const query = normalizeSearchText(searchInput ? searchInput.value.trim() : "");
+      const region = regionSelect ? regionSelect.value : "all";
+      let visible = 0;
+
+      cards.forEach(function (card) {
+        const matchesCategory = activeCategory === "all" || card.getAttribute("data-category") === activeCategory;
+        const matchesRegion = region === "all" || card.getAttribute("data-region") === region;
+        const matchesQuery = !query || normalizeSearchText(card.getAttribute("data-search")).indexOf(query) !== -1;
+        const show = matchesCategory && matchesRegion && matchesQuery;
+        card.hidden = !show;
+        if (show) visible += 1;
+      });
+
+      filterButtons.forEach(function (button) {
+        button.setAttribute(
+          "aria-pressed",
+          button.getAttribute("data-library-filter") === activeCategory ? "true" : "false"
+        );
+      });
+
+      if (status) {
+        status.textContent = visible === 1
+          ? ui.resultOne
+          : ui.results.replace("{count}", visible);
+      }
+      if (empty) empty.hidden = visible !== 0;
+    }
+
+    filterButtons.forEach(function (button) {
+      button.addEventListener("click", function () {
+        activeCategory = button.getAttribute("data-library-filter");
+        applyFilters();
+        if (button.classList.contains("library-category")) {
+          const catalogue = document.querySelector(".library-catalogue");
+          if (catalogue) {
+            catalogue.scrollIntoView({
+              behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+              block: "start"
+            });
+          }
+        }
+      });
+    });
+
+    if (searchInput) {
+      searchInput.addEventListener("input", applyFilters);
+    }
+
+    if (regionSelect) {
+      regionSelect.addEventListener("change", applyFilters);
+    }
+
+    if (reset) {
+      reset.addEventListener("click", function () {
+        activeCategory = "all";
+        if (searchInput) searchInput.value = "";
+        if (regionSelect) regionSelect.value = "all";
+        applyFilters();
+      });
+    }
+
+    applyFilters();
+  }
+
   function setupReveal() {
     const nodes = document.querySelectorAll(".reveal");
     if (!("IntersectionObserver" in window) ||
@@ -552,7 +784,7 @@
   }
 
   function setupScrollSpy() {
-    if (page === "home") return;
+    if (page === "home" || page === "library") return;
     const links = Array.prototype.slice.call(document.querySelectorAll(".toc a[href^='#']"));
     const sections = links.map(function (link) {
       return document.querySelector(link.getAttribute("href"));
@@ -712,12 +944,14 @@
     renderChrome();
     if (page === "home") {
       renderHome();
+    } else if (page === "library") {
+      renderLibrary();
     } else {
       renderModule();
     }
     setupReveal();
     setupScrollSpy();
-    if (window.innerWidth <= 920) {
+    if (window.innerWidth <= 1040) {
       const menu = document.getElementById("masthead-menu");
       if (menu) menu.classList.remove("is-open");
     }

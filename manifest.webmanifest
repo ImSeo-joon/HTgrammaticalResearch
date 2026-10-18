@@ -56,6 +56,17 @@
           "sizes": "192x192"
         }
       ]
+    },
+    {
+      "name": "Language & Text Library",
+      "short_name": "Library",
+      "url": "./library.html?lang=en",
+      "icons": [
+        {
+          "src": "assets/img/brand/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
     }
   ]
 }

@@ -1,6 +1,6 @@
 /* 高桌文法研究中心 · offline shell
    Bump CACHE_VERSION whenever the site content changes. */
-const CACHE_VERSION = "gtl-v11";
+const CACHE_VERSION = "gtl-v20";
 const CORE_ASSETS = [
   "./",
   "./index.html",
@@ -9,6 +9,7 @@ const CORE_ASSETS = [
   "./social.html",
   "./love.html",
   "./creation.html",
+  "./library.html",
   "./404.html",
   "./manifest.webmanifest",
   "./assets/css/style.css",
@@ -23,6 +24,7 @@ const CORE_ASSETS = [
   "./assets/js/content/social.js",
   "./assets/js/content/love.js",
   "./assets/js/content/creation.js",
+  "./assets/js/content/library.js",
   "./assets/img/brand/ambience-wide.jpg",
   "./assets/img/brand/ambience-portrait.jpg",
   "./assets/img/brand/source-ambience.jpg",
