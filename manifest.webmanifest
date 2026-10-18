@@ -1,0 +1,61 @@
+{
+  "name": "High Table Grammatical Research Center",
+  "short_name": "High Table",
+  "description": "Grammar, emotion, social life, love and creation — a small college without walls in English, Chinese and French.",
+  "lang": "en",
+  "dir": "ltr",
+  "id": "./",
+  "start_url": "./?source=pwa",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
+  "orientation": "any",
+  "background_color": "#0d0b09",
+  "theme_color": "#211d17",
+  "categories": ["education", "books", "lifestyle"],
+  "prefer_related_applications": false,
+  "icons": [
+    {
+      "src": "assets/img/brand/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/img/brand/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/img/brand/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Grammar",
+      "short_name": "Grammar",
+      "url": "./grammar.html?lang=en",
+      "icons": [
+        {
+          "src": "assets/img/brand/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Love",
+      "short_name": "Love",
+      "url": "./love.html?lang=en",
+      "icons": [
+        {
+          "src": "assets/img/brand/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ]
+}
