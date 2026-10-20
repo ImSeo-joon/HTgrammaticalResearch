@@ -1,6 +1,6 @@
 /* 高桌文法研究中心 · offline shell
    Bump CACHE_VERSION whenever the site content changes. */
-const CACHE_VERSION = "gtl-v20";
+const CACHE_VERSION = "gtl-v23";
 const CORE_ASSETS = [
   "./",
   "./index.html",

@@ -1,12 +1,12 @@
 /* =========================================================
-   高桌文法研究中心 · trilingual site engine
+   高桌文法研究中心 · quadrilingual site engine
    Requires: assets/js/content/<page>.js (window.GTL_CONTENT)
    ========================================================= */
 
 (function () {
   "use strict";
 
-  const LANGS = ["zh", "en", "fr"];
+  const LANGS = ["zh", "en", "fr", "ja"];
   const STORAGE_KEY = "gtl-lang";
 
   const CHROME = {
@@ -40,7 +40,7 @@
       disclaimerNote: "本站内容为一般性人文讨论，不构成医疗、心理、法律或财务建议。",
       footerTagline: "一所没有围墙的小型文学院。以文字、心理、人际、亲密与创作，练习更清醒也更温柔地生活。",
       footerRights: "© 2026 高桌文法研究中心",
-      footerMade: "以静默与好奇编辑 · 中 / EN / FR",
+      footerMade: "以静默与好奇编辑 · 中 / EN / FR / JP",
       langSwitch: "切换语言",
       tableHint: "← 左右滑动查看完整表格 →",
       install: "安装到桌面",
@@ -81,7 +81,7 @@
       disclaimerNote: "This site offers general humanistic reflection, not medical, psychological, legal or financial advice.",
       footerTagline: "A small college without walls. Language, mind, human company, intimacy and creation, practised toward a clearer and gentler life.",
       footerRights: "© 2026 High Table Grammatical Research Center",
-      footerMade: "Edited in silence and curiosity · 中 / EN / FR",
+      footerMade: "Edited in silence and curiosity · 中 / EN / FR / JP",
       langSwitch: "Choose language",
       tableHint: "← Scroll sideways for the full table →",
       install: "Install app",
@@ -122,7 +122,7 @@
       disclaimerNote: "Ce site propose une réflexion humaniste générale ; il ne constitue pas un avis médical, psychologique, juridique ou financier.",
       footerTagline: "Un petit collège sans murs. La langue, l'esprit, la vie sociale, l'intimité et la création, exercés vers une vie plus lucide et plus douce.",
       footerRights: "© 2026 Centre de recherche grammaticale de la Haute Table",
-      footerMade: "Édité dans le silence et la curiosité · 中 / EN / FR",
+      footerMade: "Édité dans le silence et la curiosité · 中 / EN / FR / JP",
       langSwitch: "Choisir la langue",
       tableHint: "← Faites défiler pour voir tout le tableau →",
       install: "Installer",
@@ -132,6 +132,47 @@
       installIos: "Sur iPhone ou iPad : ouvrez le site dans Safari, touchez Partager, puis « Sur l'écran d'accueil ».",
       installOther: "Si aucune invite n'apparaît, cherchez « Installer l'application » ou « Ajouter à l'écran d'accueil » dans le menu du navigateur.",
       installClose: "Compris"
+    },
+    ja: {
+      brandName: "ハイテーブル",
+      brandLatin: "GRAMMATICAL RESEARCH CENTER",
+      footerBrand: "ハイテーブル文法研究センター",
+      navLabel: "メインナビゲーション",
+      nav: {
+        home: "ホーム",
+        grammar: "文法",
+        mind: "感情",
+        social: "社会",
+        love: "愛",
+        creation: "創作",
+        library: "ライブラリ"
+      },
+      menu: "メニュー",
+      close: "閉じる",
+      skip: "本文へ",
+      enter: "入る",
+      read: "読む",
+      tocLabel: "このページの目次",
+      backHome: "← ホームへ戻る",
+      epilogueLabel: "読後に",
+      stamp: "高桌",
+      nextLabel: "次のモジュール",
+      footerExplore: "五つの学びとライブラリ",
+      footerStatement: "サイト声明",
+      disclaimer: "あくまで提案であり、依存の対象ではありません。",
+      disclaimerNote: "本サイトは一般的人文教養のためのものであり、医療・心理・法律・財務上の助言ではありません。",
+      footerTagline: "壁のない小さな文学学校。言葉、心、人との関わり、親密さ、創作を通して、より明晰で穏やかな生活を練習します。",
+      footerRights: "© 2026 ハイテーブル文法研究センター",
+      footerMade: "静けさと好奇心のもとで編集 · 中 / EN / FR / JP",
+      langSwitch: "言語を切り替える",
+      tableHint: "← 横にスクロールして表全体を表示 →",
+      install: "アプリをインストール",
+      installEyebrow: "ハイテーブル · アプリ",
+      installTitle: "ハイテーブルをデスクトップに",
+      installBody: "アプリのように開き、オフラインでもキャッシュ済みのページを読めます。",
+      installIos: "iPhone / iPad：Safariで開き、共有ボタンから「ホーム画面に追加」を選びます。",
+      installOther: "インストール案内が出ない場合は、ブラウザのメニューで「アプリをインストール」または「ホーム画面に追加」を探してください。",
+      installClose: "わかりました"
     }
   };
 
@@ -181,7 +222,7 @@
 
   function pick(object, fallbackLang) {
     if (!object) return null;
-    return object[lang] || object[fallbackLang || "zh"] || object.en || null;
+    return object[lang] || object[fallbackLang || (lang === "ja" ? "en" : "zh")] || object.en || null;
   }
 
   function escapeHtml(value) {

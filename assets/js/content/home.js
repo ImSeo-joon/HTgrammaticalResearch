@@ -4,15 +4,15 @@ window.GTL_CONTENT.home = {
   meta: {
     zh: {
       title: "高桌文法研究中心 — 语言、心灵与人间",
-      description: "高桌文法研究中心是一间没有围墙的小型文学院，以中英法三语讨论文法、情绪、社交、爱恋与创作，并设有可检索的语言文字资料库。"
+      description: "高桌文法研究中心是一间没有围墙的小型文学院，以中英法日四语讨论文法、情绪、社交、爱恋与创作，并设有可检索的语言文字资料库。"
     },
     en: {
       title: "High Table Grammatical Research Center — the language of life",
-      description: "A small college without walls with five studies and a searchable language and text library, in Chinese, English and French."
+      description: "A small college without walls with five studies and a searchable language and text library, in Chinese, English, French and Japanese."
     },
     fr: {
       title: "Centre de recherche grammaticale de la Haute Table — la langue de la vie",
-      description: "Un petit collège sans murs : cinq études et une bibliothèque consultable des langues et des textes, en chinois, anglais et français."
+      description: "Un petit collège sans murs : cinq études et une bibliothèque consultable des langues et des textes, en chinois, anglais, français et japonais."
     }
   },
 
@@ -165,21 +165,21 @@ window.GTL_CONTENT.home = {
       zh: {
         eyebrow: "研究资料库",
         title: "从一张书桌，进入更多文本",
-        text: "五十一种经过分类的中外文献，覆盖文学、文字研究、语言学、社会学、心理学与经济学。可以按类别、地区与关键词检索，每条都附有三语摘要、阅读视角和来源。",
+        text: "五十一种经过分类的中外文献，覆盖文学、文字研究、语言学、社会学、心理学与经济学。可以按类别、地区与关键词检索，每条都附有四语摘要、阅读视角和来源。",
         cta: "打开语言文字资料库",
         items: ["文学 · 11", "文字研究 · 8", "语言学 · 8", "社会学 · 8", "心理学 · 8", "经济学 · 8"]
       },
       en: {
         eyebrow: "Research library",
         title: "From one desk, into many more texts",
-        text: "Fifty-one classified works from across the world, spanning literature, writing and textual research, linguistics, sociology, psychology and economics. Filter by category, region or keyword; every entry includes a trilingual summary, a reading lens and a source.",
+        text: "Fifty-one classified works from across the world, spanning literature, writing and textual research, linguistics, sociology, psychology and economics. Filter by category, region or keyword; every entry includes a quadrilingual summary, a reading lens and a source.",
         cta: "Open the Language & Text Library",
         items: ["Literature · 11", "Writing & text · 8", "Linguistics · 8", "Social thought · 8", "Psychology · 8", "Economics · 8"]
       },
       fr: {
         eyebrow: "Bibliothèque de recherche",
         title: "D'un bureau, vers beaucoup d'autres textes",
-        text: "Cinquante et un ouvrages classés, venus de plusieurs aires culturelles : littérature, écritures et critique textuelle, linguistique, sociologie, psychologie et économie. Filtrez par catégorie, région ou mot-clé ; chaque notice propose un résumé trilingue, un angle de lecture et une source.",
+        text: "Cinquante et un ouvrages classés, venus de plusieurs aires culturelles : littérature, écritures et critique textuelle, linguistique, sociologie, psychologie et économie. Filtrez par catégorie, région ou mot-clé ; chaque notice propose un résumé quadrilingue, un angle de lecture et une source.",
         cta: "Ouvrir la bibliothèque",
         items: ["Littérature · 11", "Écritures · 8", "Linguistique · 8", "Pensée sociale · 8", "Psychologie · 8", "Économie · 8"]
       }
@@ -317,4 +317,109 @@ window.GTL_CONTENT.home = {
       }
     }
   }
+};
+
+window.GTL_CONTENT.home.meta.ja = {
+  title: "ハイテーブル文法研究センター — 言語、心、人間の世界",
+  description: "文法、感情、社会、愛、創作を四言語で考える、壁のない小さな文学学校。検索できる言語・テキスト資料ライブラリも備えています。"
+};
+
+window.GTL_CONTENT.home.home.hero.ja = {
+  eyebrow: "壁のない小さな文学学校",
+  titleTop: "ハイテーブル",
+  titleBottom: "文法研究センター",
+  latin: "EXPLORING THE LANGUAGE OF LIFE THROUGH GRAMMAR",
+  lede: "言葉、心、人との関わり、親密さ、創作を同じテーブルへ戻します。近道の公式はありません。観察し、表現し、ちょうどよい距離を何度も練習するだけです。",
+  primaryLabel: "文法から始める",
+  primaryHref: "grammar.html",
+  secondaryLabel: "私たちの考えを読む",
+  secondaryHref: "#approach"
+};
+
+window.GTL_CONTENT.home.home.modules.ja = {
+  indexLabel: "今日のテーブル",
+  indexNoteShort: "五つの学び",
+  indexNote: "どうぞ自由な席に。ここにある言葉はすべて、ひとつの招待です。",
+  eyebrow: "五つの学び",
+  title: "ひとつのテーブルから、五つの実践へ",
+  lede: "各モジュールは読めるノートと実際にできる練習でできています。順番に進んでも、今日いちばん必要なページから始めてもかまいません。",
+  items: [
+    {
+      title: "文法",
+      latin: "GRAMMAR & LETTERS",
+      desc: "漢字・ラテン文字・仮名から出発し、中国・日本・西洋の文学伝統を精読します。"
+    },
+    {
+      title: "感情",
+      latin: "PSYCHOLOGY · PHILOSOPHY · SOCIETY",
+      desc: "心理学・哲学・社会学の灯りで、感情の形を照らします。"
+    },
+    {
+      title: "社会",
+      latin: "CONVERSATION & MEASURE",
+      desc: "場面に応じて明確に話し、相手を心に置きながら距離を保ちます。"
+    },
+    {
+      title: "愛",
+      latin: "CLOSENESS & ROOM",
+      desc: "近づき、聞き、余白を残すことを学び、好きが過剰にも不在にもならないようにします。"
+    },
+    {
+      title: "創作",
+      latin: "OBSERVATION & CRAFT",
+      desc: "観察から推敲まで、内なる文芸への衝動を手に取れる作品へ変えます。"
+    }
+  ]
+};
+
+window.GTL_CONTENT.home.home.manifesto.ja = {
+  eyebrow: "私たちの考え",
+  title: "高桌は高い演壇ではない",
+  quote: "「高桌」は人が共に座るテーブルであり、上から見下ろす演壇ではありません。",
+  body: "文法は試験の規則ではなく、他者がどう考えるかを理解する道です。感情は消すべき故障ではなく、身体と状況が私たちに宛てた手紙です。社会性は演技ではなく、相手を心に置く技術です。愛は所有ではなく、二人の完全な人が近づくことを学ぶことです。創作は天才の特権ではなく、誰もが灯せる明かりです。",
+  principles: [
+    {
+      num: "01",
+      title: "緩やか · SLOW",
+      text: "一文をゆっくり読み、一つの問いにゆっくり答える。速さはしばしば距離を奪います。"
+    },
+    {
+      num: "02",
+      title: "正確 · PRECISE",
+      text: "「私が感じていること」と「事実であること」を分ける。正確さは優しさの始まりです。"
+    },
+    {
+      num: "03",
+      title: "実践 · PRACTICAL",
+      text: "明日の会話に戻れない知識は、まだ紙の上にあります。"
+    }
+  ]
+};
+
+window.GTL_CONTENT.home.home.library.ja = {
+  eyebrow: "研究ライブラリ",
+  title: "ひとつの机から、さらに多くのテキストへ",
+  text: "世界各地の五十一冊を分類して収録。文学、文字研究、言語学、社会学、心理学、経済学を含みます。分類・地域・キーワードで検索でき、各項目に四語の要約、読むための視点、出典があります。",
+  cta: "言語・テキスト資料ライブラリを開く",
+  items: ["文学 · 11", "文字研究 · 8", "言語学 · 8", "社会学 · 8", "心理学 · 8", "経済学 · 8"]
+};
+
+window.GTL_CONTENT.home.home.practices.ja = {
+  eyebrow: "一日五つのこと",
+  title: "ひとつのテーブル、五つの実践",
+  items: [
+    { verb: "読む", label: "READ", text: "ゆっくりした一ページ" },
+    { verb: "気づく", label: "NOTICE", text: "一つの細部を記録する" },
+    { verb: "話す", label: "SPEAK", text: "一つの文を最後まで丁寧に言う" },
+    { verb: "愛する", label: "LOVE", text: "具体的な気遣いを一つ" },
+    { verb: "書く", label: "WRITE", text: "発表しない三行を書く" }
+  ]
+};
+
+window.GTL_CONTENT.home.home.closing.ja = {
+  eyebrow: "始まる場所",
+  title: "準備ができてから始めなくていい。",
+  text: "どこから読んでもかまいません。役に立つ文は書き写し、納得できないところには線を引きましょう。ここは標準解答ではなく、何度でも戻ってこられるテーブルです。",
+  cta: "文法へ",
+  href: "grammar.html"
 };

@@ -49,8 +49,8 @@
   --gold: #9a7b45;
   --module: #33544a;
   --module-soft: rgba(51, 84, 74, 0.09);
-  --display: "Cormorant Garamond", "Songti SC", "STSong", "SimSun", serif;
-  --serif: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", "Noto Serif SC", "Songti SC", "STSong", "SimSun", serif;
+  --display: "Cormorant Garamond", "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", "Noto Serif JP", "Songti SC", "STSong", "SimSun", serif;
+  --serif: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", "Noto Serif JP", "Noto Serif SC", "Songti SC", "STSong", "SimSun", serif;
   --sans: "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
   --max: 1240px;
   --reading: 760px;
@@ -1386,6 +1386,25 @@ html[lang="zh-Hans"] .quote p {
   font-style: normal;
   font-size: clamp(19px, 2vw, 23px);
   line-height: 1.9;
+}
+
+html[lang="ja"] .quote p {
+  font-family: var(--serif);
+  font-style: normal;
+  font-size: clamp(19px, 2vw, 23px);
+  line-height: 1.95;
+  letter-spacing: 0.025em;
+}
+
+html[lang="ja"] .library-hero h1 {
+  word-break: keep-all;
+}
+
+@media (max-width: 680px) {
+  html[lang="ja"] .library-hero h1 {
+    font-size: clamp(34px, 9.6vw, 44px);
+    line-height: 1.3;
+  }
 }
 
 .quote cite {
